@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+    networks:
+      - sketchmind
+
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./backend/.env
+    depends_on:
+      - postgres
+      - redis
+    networks:
+      - sketchmind
+
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: sketchmind
+      POSTGRES_PASSWORD: sketchmind_pass
+      POSTGRES_DB: sketchmind_db
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - sketchmind
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - sketchmind
+
+volumes:
+  pg_data:
+  redis_data:
+
+networks:
+  sketchmind:
+    driver: bridge

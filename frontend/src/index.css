@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Mono:wght@400;700&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#08080f;--bg2:#0f1220;--bg3:#141826;
+  --border:rgba(255,255,255,0.07);--text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+  --accent:#3b82f6;--accent2:#06b6d4;--success:#4ade80;--warning:#f59e0b;--danger:#f87171;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+input,textarea,select,button{font-family:inherit;}
+::-webkit-scrollbar{width:5px;}
+::-webkit-scrollbar-track{background:var(--bg);}
+::-webkit-scrollbar-thumb{background:#1e293b;border-radius:99px;}
+::selection{background:rgba(59,130,246,0.25);}
+input:-webkit-autofill{-webkit-box-shadow:0 0 0 30px #0f1e38 inset!important;-webkit-text-fill-color:#f1f5f9!important;}
+@keyframes spin   {to{transform:rotate(360deg);}}
+@keyframes fadeIn {from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
+@keyframes slideIn{from{opacity:0;transform:translateX(28px);}to{opacity:1;transform:none;}}

@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: sketchmind-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+    - hosts:
+        - sketchmind.app
+        - api.sketchmind.app
+      secretName: sketchmind-tls
+  rules:
+    - host: sketchmind.app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sketchmind-frontend-svc
+                port: { number: 80 }
+    - host: api.sketchmind.app
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: sketchmind-backend-svc
+                port: { number: 8000 }

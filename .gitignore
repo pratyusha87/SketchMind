@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Build outputs
+frontend/build/
+*.egg-info/
+dist/
+
+# Environment files (NEVER commit real .env)
+.env
+!.env.example
+backend/.env
+!backend/.env.example
+
+# Secrets
+*.pem
+*.key
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
